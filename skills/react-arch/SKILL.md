@@ -53,7 +53,7 @@ that well.
 | `@react-arch/react` | The components you author with, plus `renderToDocument()`. |
 | `@react-arch/validation` | `review()` — run the full validation pass in code. |
 | `@react-arch/studio` | The `<Studio>` visualizer component. |
-| `@react-arch/cli` (CLI, binary `react-arch`) | `react-arch check` (validate/export); ad-hoc `npx @react-arch/cli check`. |
+| `@react-arch/cli` (CLI, binary `react-arch`) | `react-arch check` (validate/export) and `react-arch compare` (rank variants); ad-hoc `npx @react-arch/cli …`. |
 | `create-react-arch-app` | `npx create-react-arch-app <name>` scaffolder. |
 
 ## Rules of thumb

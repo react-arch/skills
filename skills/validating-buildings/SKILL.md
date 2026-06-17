@@ -3,8 +3,9 @@ name: validating-buildings
 description: >-
   Use after writing or editing a React Arch building, or to run the agent
   feedback loop. Covers `react-arch check` and its flags, the JSON report shape,
-  the `review()` function, every diagnostic code with how to fix it, and how to
-  iterate until the model is clean.
+  the `review()` function, every diagnostic code with how to fix it, how to
+  iterate until the model is clean, and comparing/ranking variants with
+  `react-arch compare`.
 ---
 
 # Validating buildings & the feedback loop
@@ -134,3 +135,32 @@ npx @react-arch/cli check src/House.tsx --brief brief.json --json
 3. Parse `diagnostics`. If `ok` is false or warnings remain, apply each `fix` by
    `code` and go to 2.
 4. Stop when `ok` is `true` with no warnings. Optionally export with `--svg`/`--glb`.
+
+## Comparing variants
+
+When you produce several options, compare and rank them. Every exported building
+component (across all entry files you pass) is treated as a variant:
+
+```bash
+npx @react-arch/cli compare src/OptionA.tsx src/OptionB.tsx --json
+# or several variants exported from one file:
+npx @react-arch/cli compare src/Variants.tsx --json
+```
+
+It runs the full review on each and emits a scored comparison (`compare.json`,
+and to stdout with `--json`):
+
+```jsonc
+{
+  "best": "OptionB",                 // highest score; ties → more floor area
+  "variants": [
+    { "name": "OptionA", "ok": true, "score": 94,
+      "counts": { "error": 0, "warning": 1, "info": 0 },
+      "totalAreaM2": 120, "rooms": 8, "floors": 2, "walls": 30, "openings": 12, "objects": 9 }
+  ]
+}
+```
+
+`score` is 0–100 (100 minus weighted diagnostics: error −25, warning −6, info
+−1). Or call `compareVariants([{ name, doc }])` from `@react-arch/validation` in
+code. Use this to pick the best option, or to check a change didn't regress.
