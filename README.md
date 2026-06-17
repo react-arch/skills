@@ -34,7 +34,7 @@ npx skills add react-arch/skills --skill writing-buildings -a claude-code
 
 1. `npx create-react-arch-app my-house`
 2. Write the building in `src/House.tsx` (writing-buildings).
-3. `npx react-arch check src/House.tsx --json` and fix each diagnostic
+3. `npx @react-arch/cli check src/House.tsx --json` and fix each diagnostic
    (validating-buildings) until the report's `ok` is `true`.
 4. Export JSON / SVG / GLB.
 

@@ -34,7 +34,7 @@ that well.
 
 3. **Check** it — this is the agent feedback loop:
    ```bash
-   npx react-arch check src/House.tsx --json
+   npx @react-arch/cli check src/House.tsx --json
    ```
    It renders the building, runs every validation, and prints a machine-readable
    report. Load the **validating-buildings** skill to read the report and fix
@@ -53,7 +53,7 @@ that well.
 | `@react-arch/react` | The components you author with, plus `renderToDocument()`. |
 | `@react-arch/validation` | `review()` — run the full validation pass in code. |
 | `@react-arch/studio` | The `<Studio>` visualizer component. |
-| `react-arch` (CLI) | `react-arch studio` (visualize) and `react-arch check` (validate/export). |
+| `@react-arch/cli` (CLI, binary `react-arch`) | `react-arch check` (validate/export); ad-hoc `npx @react-arch/cli check`. |
 | `create-react-arch-app` | `npx create-react-arch-app <name>` scaffolder. |
 
 ## Rules of thumb

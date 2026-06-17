@@ -16,7 +16,7 @@ fits.
 ## 1. CLI — `react-arch check`
 
 ```bash
-npx react-arch check src/House.tsx --json
+npx @react-arch/cli check src/House.tsx --json
 ```
 
 Flags:
@@ -124,13 +124,13 @@ A brief is a structured spec you validate the model against:
 ```
 
 ```bash
-npx react-arch check src/House.tsx --brief brief.json --json
+npx @react-arch/cli check src/House.tsx --brief brief.json --json
 ```
 
 ## The loop (what an agent should do)
 
 1. Write/edit the building.
-2. `npx react-arch check src/House.tsx --json` (add `--brief` if you have one).
+2. `npx @react-arch/cli check src/House.tsx --json` (add `--brief` if you have one).
 3. Parse `diagnostics`. If `ok` is false or warnings remain, apply each `fix` by
    `code` and go to 2.
 4. Stop when `ok` is `true` with no warnings. Optionally export with `--svg`/`--glb`.
